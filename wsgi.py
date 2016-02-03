@@ -9,6 +9,7 @@ import sys
 if __name__ == '__main__':
     ip   = 'localhost'
     port = 8051
+    print 'Listening on http://localhost:8051'
     zapp = imp.load_source('application', 'wsgi/application')
 
     from wsgiref.simple_server import make_server

@@ -5,8 +5,8 @@ from setuptools import setup
 # Uncomment one or more lines below in the install_requires section
 # for the specific client drivers/modules your application needs.
 
-setup(name='YourAppName', version='1.0',
-      description='OpenShift Python-3.3 / Tornado Web Server based application',
-      author='Your Name', author_email='admin@example.org',
-      url='https://pypi.python.org/pypi',
+setup(name='fifochat', version='1.0',
+      description='fifochat',
+      author='Pablo Manuel García Corzo', author_email='pablo.manuel.garcia@blue-tc.com',
+      url='',
      )
