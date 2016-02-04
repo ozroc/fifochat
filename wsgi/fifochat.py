@@ -5,7 +5,7 @@ import time
 import traceback
 import sys
 
-from store_backends.memory import messageManager
+from store_backends.mongo import messageManager
 
 MESSAGES = messageManager()
 

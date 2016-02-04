@@ -9,4 +9,9 @@ setup(name='fifochat', version='1.0',
       description='fifochat',
       author='Pablo Manuel García Corzo', author_email='pablo.manuel.garcia@blue-tc.com',
       url='',
+      install_requires=[
+        'pymongo',
+        'tornado',
+        'pandas'
+        ],
      )
