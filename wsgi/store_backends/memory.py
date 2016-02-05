@@ -1,12 +1,26 @@
 class messageManager(object):
     def __init__(self):
-        self.__fifo__=[]
+        self.__fifo__={'base':[]}
 
-    def append(self, content):
-        self.__fifo__.append(content)
-    
-    def pop(self):
-        return self.__fifo__.pop(0)
+    def append(self, content, fifo='base'):
+        try:
+            self.__fifo__[fifo].append(content)
+        except KeyError:
+            self.__fifo__[fifo]=[content]
+
+    def pop(self, fifo='base'):
+        if fifo not in self.__fifo__.keys():
+            raise Exception('FIFO "%s" does not exist' % fifo)
+        else:
+            return self.__fifo__[fifo].pop(0)
         
-    def get(self):
-        return self.__fifo__
+    def dump(self, fifo='__ALL__'):
+        if fifo not in self.__fifo__.keys():
+            raise Exception('FIFO "%s" does not exist' % fifo)
+        elif fifo == '__ALL__':
+            return self.__fifo__
+        else:
+            return self.__fifo__[fifo]
+
+    def log_warning(self, message):
+        print message
