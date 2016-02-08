@@ -27,9 +27,9 @@ def generate_dashboard(data):
             width=800, 
             height=250,
             title='FFT: %s' % key)
-        y2 = fftpack.fft(y)
+        y2 = map(lambda x: x.real, fftpack.fft(y))
         x2=range(len(y))
         figure2.line(x2,y2)
-        figures.append(bokeh.plotting.hbox(figure,figure2))
+        figures.append(bokeh.plotting.hplot(figure,figure2))
     
     return file_html(bokeh.plotting.vplot(*figures), CDN, "my plot")

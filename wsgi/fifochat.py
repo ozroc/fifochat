@@ -46,8 +46,8 @@ class MainHandler(tornado.web.RequestHandler):
 
 class FifoHandler(tornado.web.RequestHandler):
 
-    @capture_exceptions
     @gen.coroutine
+    @capture_exceptions
     def get(self, *args):
         uri=[ y for y in self.request.uri.split('/') if y != '']
         if uri[-1].upper() == 'POP':
@@ -59,11 +59,13 @@ class FifoHandler(tornado.web.RequestHandler):
             self.write(response)
             self.set_header("Content-Type", "text/html")
 
-    @capture_exceptions
     @gen.coroutine
+    @capture_exceptions
     def post(self, *args):
         uri=[ y for y in self.request.uri.split('/') if y != '']
-        message = {'timestamp':time.time(), 'data': json.loads(self.request.body)}
+        data = json.loads(self.request.body)
+        timestamp=data.get('timestamp', time.time())
+        message = {'timestamp':timestamp, 'data': data}
         response = json.dumps(message, indent=4)
         MESSAGES.append(message, uri[1])
         self.write(response)
