@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 import tornado.web
 import tornado.options
-from tornado.ioloop import IOLoop
 from tornado import gen
 import json
 import time
@@ -19,6 +18,12 @@ except:
 
 import dashboards.bokeh_simple as dashboard
 import dashboards.default as base_dashboard
+
+
+from fifoscheduler import Scheduler
+
+schedul = Scheduler(MESSAGES)
+
 
 def capture_exceptions(f):
     '''
@@ -45,7 +50,6 @@ class MainHandler(tornado.web.RequestHandler):
 
 
 class FifoHandler(tornado.web.RequestHandler):
-
     @gen.coroutine
     @capture_exceptions
     def get(self, *args):

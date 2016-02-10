@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 import os
-import sys
+import sys, time
 sys.path.append(os.path.dirname(__file__))
 
 if 'OPENSHIFT_REPO_DIR' in os.environ:

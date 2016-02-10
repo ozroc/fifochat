@@ -15,10 +15,10 @@ class messageManager(object):
             return self.__fifo__[fifo].pop(0)
         
     def dump(self, fifo='__ALL__'):
-        if fifo not in self.__fifo__.keys():
-            raise Exception('FIFO "%s" does not exist' % fifo)
-        elif fifo == '__ALL__':
+        if fifo == '__ALL__':
             return self.__fifo__
+        elif fifo not in self.__fifo__.keys():
+            raise Exception('FIFO "%s" does not exist' % fifo)
         else:
             return self.__fifo__[fifo]
 
